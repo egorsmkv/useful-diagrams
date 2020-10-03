@@ -39,8 +39,6 @@ with Diagram('Simple architecture of a web app', show=False, direction='TB'):
             replica = Redis(f'Redis: replica {n}')
             redis_nodes.append(replica)
 
-            # replica << redis_nodes[n - 1]
-
             redis_main << replica
             redis_main >> replica
 
