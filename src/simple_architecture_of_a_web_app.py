@@ -39,7 +39,7 @@ with Diagram('Simple architecture of a web app', show=False, direction='TB'):
             replica = Redis(f'Redis: replica {n}')
             redis_nodes.append(replica)
 
-            replica << redis_nodes[n - 1]
+            # replica << redis_nodes[n - 1]
 
             redis_main << replica
             redis_main >> replica
@@ -90,7 +90,7 @@ with Diagram('Simple architecture of a web app', show=False, direction='TB'):
                 server_firewall = Firewall('Firewall')
                 laravel_app = Laravel('PHP FPM: master')
 
-                with Cluster(f'PHP FPM forks: node {i+1}'):
+                with Cluster(f'PHP FPM forks: node {i + 1}'):
                     phpfpm_forks = [Laravel(f'PHP FPM: fork {n}') for n in range(1, NUM_PHP_FPM_FORKS + 1)]
                     laravel_app >> phpfpm_forks
 
